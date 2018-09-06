@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(gSLICr)
-  
+
 IF(MSVC_IDE)
   set(OpenCV_STATIC OFF)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
@@ -46,3 +46,10 @@ target_link_libraries(gSLICr_lib ${CUDA_LIBRARY})
 
 add_executable(demo demo.cpp)
 target_link_libraries(demo gSLICr_lib ${OpenCV_LIBS})
+
+find_package(Boost COMPONENTS system filesystem REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+link_directories(${Boost_LIBRARY_DIR})
+
+add_executable(compute_superpixels compute_superpixels.cpp)
+target_link_libraries(compute_superpixels gSLICr_lib ${OpenCV_LIBS} ${Boost_LIBRARIES})

@@ -91,6 +91,9 @@ int main(int argc, char* argv[])
 		gSLICr_engine->Draw_Segmentation_Result(out_img);
 		load_image(out_img, boundry_draw_frame);
 
+//		cv::imwrite("superpixel_seg_output.png", boundry_draw_frame);
+
+
 		char out_name[100];
 		sprintf(out_name, "%s%s.pgm", argv[3], line.c_str());
 		boost::filesystem::path out_f(out_name);

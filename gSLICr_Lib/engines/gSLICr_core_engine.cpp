@@ -45,6 +45,8 @@ void gSLICr::engines::core_engine::Write_Seg_Res_To_PGM(const char* fileName)
 	{
 		ushort lable = (ushort)data_ptr[i];
 		ushort lable_buffer = (lable << 8 | lable >> 8);
+//        printf("label: %d ", lable_buffer);
+
 		f.write((const char*)&lable_buffer, sizeof(ushort));
 	}
 	f.close();
